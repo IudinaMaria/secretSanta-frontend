@@ -1,0 +1,142 @@
+:root {
+  --bg-main: #007f80;
+  --bg-dark: #001e1f;
+  --text-light: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+  background: var(--bg-main);
+  color: var(--text-light);
+}
+
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 32px 16px;
+}
+
+.card {
+  background: var(--bg-dark);
+  padding: 32px 24px;
+  border-radius: 24px;
+  max-width: 640px;
+  width: 100%;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+}
+
+.card h1 {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.card p {
+  margin-top: 0;
+  opacity: 0.85;
+}
+
+.field {
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+label {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+input,
+select,
+textarea {
+  border-radius: 10px;
+  border: none;
+  padding: 10px 12px;
+  background: #111;
+  color: #fff;
+  font-size: 14px;
+}
+
+textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+button {
+  border: none;
+  border-radius: 999px;
+  padding: 10px 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.button-primary {
+  background: #00b3b3;
+  color: #001;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.button-secondary {
+  background: transparent;
+  border: 1px solid #00b3b3;
+  color: #00e6e6;
+}
+
+.participant-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.participant-row input {
+  flex: 1;
+}
+
+.small {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.chat-container {
+  margin-top: 24px;
+  background: #001516;
+  border-radius: 16px;
+  padding: 12px;
+  max-height: 260px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 8px;
+}
+
+.chat-bubble {
+  margin-bottom: 6px;
+  padding: 6px 10px;
+  border-radius: 12px;
+  font-size: 13px;
+  max-width: 80%;
+}
+
+.chat-bubble.me {
+  background: #004d4f;
+  align-self: flex-end;
+}
+
+.chat-bubble.santa {
+  background: #003336;
+  align-self: flex-start;
+}
