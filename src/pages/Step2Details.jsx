@@ -34,66 +34,51 @@ function Step2Details() {
   }
 
   const handleCreate = async (e) => {
-  e.preventDefault();
-  setLoading(true);
+    e.preventDefault();
+    setLoading(true);
 
-  try {
-    const res = await api.post(
-      '/api/exchanges',
-      {
-        title,
-        date,
-        drawType,
-        byMail,
-        budgetCurrency,
-        budgetAmount: Number(budgetAmount),
-        organizerEmail,
-        howHeard,
-        message,
-        participants
-      },
-      {
-        headers: {
-          'x-admin-token': import.meta.env.VITE_ADMIN_TOKEN
+    try {
+      const res = await api.post(
+        '/api/exchanges',
+        {
+          title,
+          date,
+          drawType,
+          byMail,
+          budgetCurrency,
+          budgetAmount: Number(budgetAmount),
+          organizerEmail,
+          howHeard,
+          message,
+          participants
+        },
+        {
+          headers: {
+            'x-admin-token': import.meta.env.VITE_ADMIN_TOKEN
+          }
         }
-      }
-    );
-
-    const exchange = res.data;
-
-    navigate(`/exchange/${exchange._id}`, {
-      state: { exchange }
-    });
-  } catch (err) {
-    console.error(err);
-
-    if (err.response?.status === 401) {
-      alert('Создавать обмен может только администратор. Зайдите на страницу /admin.');
-    } else {
-      alert('Ошибка при создании обмена');
-    }
-  } finally {
-    setLoading(false);
-  }
-};
-
+      );
 
       const exchange = res.data;
+
       navigate(`/exchange/${exchange._id}`, {
         state: { exchange }
       });
+
     } catch (err) {
       console.error(err);
+
       if (err.response?.status === 401 || err.response?.status === 403) {
         alert(
           'Создавать обмен может только администратор. Сначала зайдите на страницу /admin и введите пароль.'
-       );
-     } else {
-       alert('Ошибка при создании обмена');
-     }
+        );
+      } else {
+        alert('Ошибка при создании обмена');
+      }
+
     } finally {
-    setLoading(false);
-  }
+      setLoading(false);
+    }
   };
 
   return (

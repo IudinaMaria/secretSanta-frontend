@@ -1,16 +1,14 @@
 import axios from 'axios';
 
-const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
-
+// Всегда используем корректный URL из .env
 export const api = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: import.meta.env.VITE_API_URL,
   headers: {
     'Content-Type': 'application/json'
   }
 });
 
-// сюда попадёт токен при логине
+// Установка админ-токена в axios
 export function setAdminToken(token) {
   if (token) {
     api.defaults.headers.common['x-admin-token'] = token;
